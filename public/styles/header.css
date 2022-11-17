@@ -1,0 +1,20 @@
+header {
+  display: flex;
+  flex-direction: column;
+  color:white;
+  height: 520px;
+  width: 100vw;
+  background-color: rgb(213, 157, 2);
+  justify-content: flex-end;
+  align-items: center;
+  background-image: url("../images/asfalt-light.png");
+}
+
+.name {
+  font-style: normal;
+}
+
+h2 {
+  font-weight:normal;
+  margin-top: 0.2em;
+}
