@@ -13,14 +13,19 @@ form {
 
 textarea {  
   width: 90vw;
-  height: 4vh;
+  height: 6vh;
   border-top-style: hidden;
   border-left-style: hidden;
   border-right-style: hidden;
   background-color: rgb(244, 241, 236);
-  margin-bottom: 1vh;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
   resize: none;
   border-bottom-width: 6px;
+  outline: none;
+  font-size: 80%;
+  color: black;
+  font-weight: bold;
 }
 
 .form-bottom {
