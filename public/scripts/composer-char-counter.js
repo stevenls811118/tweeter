@@ -2,7 +2,7 @@
 console.log('Load successfully');
 
 
-// Retrive the form, tweet text
+// Retrive the form, tweet text, counter
 const $form = $('#tweet-form');
 const $tweet = $('#tweet-text');
 const $counter = $('#counter');
