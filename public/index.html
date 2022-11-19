@@ -33,7 +33,7 @@
       <span class="right-side"><b>Write</b> a new tweet</span>
       <i class="fa-solid fa-angles-down"></i>
     </nav>
-    <header>
+    <header class="main-header">
       <div>
         <img src="./images/profile-hex.png">
       </div>
@@ -43,7 +43,7 @@
       </div>
     </header>
     <!-- Page-specific (main) content here -->
-    <main class="container"> 
+    <main class="container" id="main-container"> 
       <section class="new-tweet">
         <form id="tweet-form">
           <label for="tweet-text">What are you humming about?</label>
@@ -51,6 +51,29 @@
           <div class="form-bottom">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text" id="counter">140</output>
+          </div>
+          <div class="tweet-container">
+            <ol>
+              <article>
+                <header>
+                  <p>Rhoda Jacobs</p>
+                  <a>@MrsJacobs</a>
+                </header>
+                <p>Hello World!</p>
+                <hr>
+                <footer>10 days ago</footer>
+              </article>
+              <article>
+                <header>
+                  <p>Newton</p>
+                  <a>@Sirlsaac</a>
+                </header>
+                <p>If I have seen further it is by standing on the shoulders of giants.</p>
+                <hr>
+                <footer>10 days ago</footer>
+              </article>
+            </ol>
+            
           </div>
         </form>
       </section>

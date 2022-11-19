@@ -1,4 +1,4 @@
-header {
+.main-header {
   display: flex;
   flex-direction: column;
   color:white;
@@ -10,11 +10,9 @@ header {
   background-image: url("../images/asfalt-light.png");
 }
 
-.name {
+h2.name {
   font-style: normal;
-}
-
-h2 {
   font-weight:normal;
   margin-top: 0.2em;
 }
+
