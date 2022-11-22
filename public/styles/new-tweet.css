@@ -58,18 +58,30 @@ article {
 
 article header {
   display: flex;
-  justify-content: space-between;
   font-size: 85%;
+  justify-content: space-between;
 }
 
-article header p{
+article div {
+  display: flex;
+}
+
+article header a {
+  display: flex;
   padding: 0%;
   font-weight:lighter;
+  align-items: center;
 }
 
-article header a{
+img.avatar{
+  width: 60px;
+  height: 60px;
+}
+
+.atPeople {
   display: flex;
   color: silver;
+  font-weight:bold;
   align-items: center;
 }
 
@@ -86,4 +98,13 @@ article footer {
 
 hr {
   border-top: 6px solid;
+}
+
+article footer i {
+  margin-left: 15px;
+}
+
+article footer i:hover {
+  color: darkgoldenrod;
+  cursor: pointer;
 }
