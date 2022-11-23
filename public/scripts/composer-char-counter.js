@@ -3,7 +3,6 @@ console.log('Load successfully');
 
 
 // Retrive the form, tweet text, counter
-const $form = $('#tweet-form');
 const $tweet = $('#tweet-text');
 const $counter = $('#counter');
 
@@ -24,9 +23,3 @@ $tweet.on('input', function(event) {
 });
 
 
-// $form.on('submit', (event) => {
-//   event.preventDefault(); // Stop the form from loading a new page
-
-//   const tweetText = $tweet.val();
-//   console.log(tweetText);
-// });

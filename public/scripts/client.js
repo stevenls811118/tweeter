@@ -5,6 +5,7 @@
  */
 console.log('client.js load successfully');
 
+const $form = $('#tweet-form');
 const data = [
   {
     "user": {
@@ -62,10 +63,10 @@ const createTweetElement = (tweet) => {
 
 const timeDif = (timestamp) => {
   let now = Date.now();
-  console.log(now);
   let onDayInMs = 1000 * 60 * 60 * 24;
   let difInDays = (now - timestamp)/ onDayInMs;
   let difInMonths = 0;
+
   if (difInDays < 1) {
     return `Recent`;
   } else if (difInDays < 2 && difInDays >= 1) {
@@ -74,12 +75,27 @@ const timeDif = (timestamp) => {
     return `${Math.floor(difInDays)} days ago`;
   } else {
     difInMonths = Math.floor(difInDays / 30);
-  }
-  if (difInMonths <= 12) {
-    return `${difInMonths} months ago`;
-  } else {
-    return `${Math.floor(difInMonths / 12)} years ago`;
-  }
+    if (difInMonths <= 12) {
+      return `${difInMonths} months ago`;
+    } else {
+      return `${Math.floor(difInMonths / 12)} years ago`;
+    }
+  }  
 };
+
+$form.on('submit', function(event) {
+  event.preventDefault(); // Stop the form from loading a new page
+
+  const tweetText = $tweet.val();
+  console.log(this);
+  console.log( $( this ).serialize() );
+
+  $.ajax({
+    type: "POST",
+    url: `/`,
+    data: tweetText,
+    success: console.log(`success!`)
+  });
+});
 
 renderTweets(data);
