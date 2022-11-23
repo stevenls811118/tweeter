@@ -16,7 +16,7 @@ const data = [
     "content": {
       "text": "If I have seen further it is by standing on the shoulders of giants"
     },
-    "created_at": 1461116232227
+    "created_at": 1668927272016
   },
   {
     "user": {
@@ -26,7 +26,7 @@ const data = [
     "content": {
       "text": "Je pense , donc je suis"
     },
-    "created_at": 1461113959088
+    "created_at": 1669013672016
   }
 ]
 
@@ -37,6 +37,7 @@ const renderTweets = (tweets) => {
 }
 
 const createTweetElement = (tweet) => {
+  
   const $tweetTest = $(`<article>
     <header>
       <div>
@@ -48,7 +49,7 @@ const createTweetElement = (tweet) => {
     <p>${tweet.content.text}</p>
     <hr>
     <footer>
-      <span>10 days ago</span>
+      <span>${timeDif(tweet.created_at)}</span>
       <div>
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
@@ -58,5 +59,27 @@ const createTweetElement = (tweet) => {
   </article>`);
   $('.tweetTest').append($tweetTest);
 }
+
+const timeDif = (timestamp) => {
+  let now = Date.now();
+  console.log(now);
+  let onDayInMs = 1000 * 60 * 60 * 24;
+  let difInDays = (now - timestamp)/ onDayInMs;
+  let difInMonths = 0;
+  if (difInDays < 1) {
+    return `Recent`;
+  } else if (difInDays < 2 && difInDays >= 1) {
+    return `1 day ago`;
+  } else if (difInDays <= 31 && difInDays >= 2) {
+    return `${Math.floor(difInDays)} days ago`;
+  } else {
+    difInMonths = Math.floor(difInDays / 30);
+  }
+  if (difInMonths <= 12) {
+    return `${difInMonths} months ago`;
+  } else {
+    return `${Math.floor(difInMonths / 12)} years ago`;
+  }
+};
 
 renderTweets(data);
