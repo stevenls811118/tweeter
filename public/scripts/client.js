@@ -8,9 +8,9 @@ console.log('client.js load successfully');
 const $form = $('#tweet-form');
 
 const renderTweets = (tweets) => {
-  tweets.forEach(tweet => {
-    createTweetElement(tweet);
-  });
+  for (let i = tweets.length - 1; i >= 0; i--) {
+    createTweetElement(tweets[i]);
+  }
 };
 
 const createTweetElement = (tweet) => {
@@ -49,9 +49,11 @@ $form.on('submit', function(event) {
   } else {
     $.ajax({
       type: "POST",
-      url: `/`,
-      data: tweetText,
-      success: console.log('Post done!')
+      url: `/tweets`,
+      data: {text: tweetText},
+      success: () => {
+        loadtweets();
+      }
     });
   }  
 });
@@ -60,8 +62,8 @@ const loadtweets = () => {
   $.ajax({
     url: `http://localhost:8080/tweets`,
     success: (response) => {
+      $('.tweetTest').empty();
       renderTweets(response);
-      console.log(response);
     },
     error: (error) => {
       console.log(error);
