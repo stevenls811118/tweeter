@@ -6,7 +6,7 @@ console.log('Load successfully');
 const $tweet = $('#tweet-text');
 const $counter = $('#counter');
 
-console.log($form, $tweet, $counter);
+console.log($tweet, $counter);
 
 // Listen for form submissions
 
