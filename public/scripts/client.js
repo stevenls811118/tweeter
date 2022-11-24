@@ -53,6 +53,7 @@ $form.on('submit', function(event) {
       data: {text: tweetText},
       success: () => {
         loadtweets();
+        $form.reset();
       }
     });
   }  
