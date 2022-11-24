@@ -41,14 +41,19 @@ $form.on('submit', function(event) {
   event.preventDefault(); // Stop the form from loading a new page
 
   const tweetText = $tweet.val();
-  // console.log( $( this ).serialize() );
 
-  $.ajax({
-    type: "POST",
-    url: `/`,
-    data: tweetText,
-    success: console.log(`success!`)
-  });
+  if (tweetText === '') {
+    alert(`You have nothing to tweet!`);
+  } else if (tweetText.length > 140) {
+    alert(`Your tweet is too long!`);
+  } else {
+    $.ajax({
+      type: "POST",
+      url: `/`,
+      data: tweetText,
+      success: console.log('Post done!')
+    });
+  }  
 });
 
 const loadtweets = () => {
