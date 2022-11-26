@@ -88,6 +88,7 @@ img.avatar{
 
 article p {
   padding: 0% 2% 0% 2%;
+  word-wrap: break-word;
 }
 
 article footer {
@@ -108,4 +109,22 @@ article footer i {
 article footer i:hover {
   color: darkgoldenrod;
   cursor: pointer;
+}
+
+#error {
+  display: flex;
+  margin-top: .5em;
+  width: 90vw;
+}
+
+#error-message {
+  display: flex;
+  border: red solid;
+  border-width: thick;
+  font-size: 90%;
+  width: 90vw;
+  height: 3em;
+  align-items: center;
+  padding-left: 1em;
+  color: red;
 }

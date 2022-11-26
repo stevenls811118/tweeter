@@ -6,13 +6,35 @@
 console.log('client.js load successfully');
 
 const $form = $('#tweet-form');
+const $error = $('#error');
+const $noInput = $(`
+  <div id="error-message">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <p>You have nothing to tweet!<p>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>`);
+const $overLimit = $(`
+<div id="error-message">
+  <i class="fa-solid fa-triangle-exclamation"></i>
+  <p>You tweet is too long! Please respect our arbitrary limit of 140 characters!<p>
+  <i class="fa-solid fa-triangle-exclamation"></i>
+</div>`);
 
+// Render tweets
 const renderTweets = (tweets) => {
   for (let i = tweets.length - 1; i >= 0; i--) {
     createTweetElement(tweets[i]);
   }
 };
 
+// Escape function to prevent XSS
+const escape = (str) => {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+// Create single tweet
 const createTweetElement = (tweet) => {
   const $tweetTest = $(`
   <article>
@@ -23,7 +45,7 @@ const createTweetElement = (tweet) => {
       </div>
       <a class="atPeople">${tweet.user.handle}</a>
     </header>
-    <p>${tweet.content.text}</p>
+    <p>${escape(tweet.content.text)}</p>
     <hr>
     <footer>
       <span>${timeago.format(tweet.created_at)}</span>  
@@ -37,28 +59,31 @@ const createTweetElement = (tweet) => {
   $('.tweetTest').append($tweetTest);
 };
 
+// Form listening function to 
 $form.on('submit', function(event) {
   event.preventDefault(); // Stop the form from loading a new page
-
-  const tweetText = $tweet.val();
-
-  if (tweetText === '') {
-    alert(`You have nothing to tweet!`);
+  $error.empty(); // Remove the previous error message
+  const tweetText = $tweet.val(); //Save the input value to tweetText
+  
+  // Check if tweet valid
+  if (tweetText === '' || tweetText == null) { 
+    $error.append($noInput);
   } else if (tweetText.length > 140) {
-    alert(`Your tweet is too long!`);
+    $error.append($overLimit);
   } else {
     $.ajax({
       type: "POST",
       url: `/tweets`,
-      data: {text: tweetText},
+      data: {text: tweetText}, // Submit the tweetText in this format to server
       success: () => {
         loadtweets();
-        $tweet.val('');
+        $tweet.val(''); // Clear the input from textarea
       }
     });
   }  
 });
 
+// Using Ajax to get tweets
 const loadtweets = () => {
   $.ajax({
     url: `http://localhost:8080/tweets`,
@@ -72,4 +97,4 @@ const loadtweets = () => {
   });
 };
 
-loadtweets();
+loadtweets(); // Load tweets when refresh the page

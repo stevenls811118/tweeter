@@ -32,7 +32,7 @@
     <nav>
       <span class="logo">tweeter</span>
       <span class="right-side"><b>Write</b> a new tweet</span>
-      <i class="fa-solid fa-angles-down"></i>
+      <i class="fa-solid fa-angles-down bounce"></i>
     </nav>
     <header class="main-header">
       <div>
@@ -46,6 +46,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container" id="main-container"> 
       <section class="new-tweet">
+        <div id="error"></div>
         <form id="tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
@@ -53,11 +54,11 @@
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text" id="counter">140</output>
           </div>
-          <div class="tweet-container">
-            <ol class="tweetTest">
-            </ol>
-          </div>
-        </form>
+        </form>  
+        <div class="tweet-container">
+          <ol class="tweetTest">
+          </ol>
+        </div>
       </section>
     </main>
   </body>

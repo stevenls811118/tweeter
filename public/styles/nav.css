@@ -33,3 +33,21 @@ nav {
   margin-top: 3.4em;
   color: red;
 }
+
+.bounce {
+  animation: updown 1s ease infinite;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-25%);
+  }
+
+  50% {
+    transform: translateY(25%);
+  }
+
+  100% {
+    transform: translateY(-25%);
+  }
+}
