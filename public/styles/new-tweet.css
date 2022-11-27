@@ -114,7 +114,6 @@ article footer i:hover {
 #error {
   display: flex;
   margin-top: .5em;
-  width: 90vw;
 }
 
 #error-message {
@@ -123,7 +122,7 @@ article footer i:hover {
   border-width: thick;
   font-size: 90%;
   width: 90vw;
-  height: 3em;
+  height: 3.5em;
   align-items: center;
   padding-left: 1em;
   color: red;

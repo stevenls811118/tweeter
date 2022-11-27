@@ -3,7 +3,7 @@
   flex-direction: column;
   color:white;
   height: 520px;
-  width: 100vw;
+  width: 100%;
   background-color: rgb(213, 157, 2);
   justify-content: flex-end;
   align-items: center;
