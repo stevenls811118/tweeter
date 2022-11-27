@@ -34,6 +34,7 @@ nav {
   color: red;
 }
 
+/* Bounce animation for the arror*/
 .bounce {
   animation: updown 1s ease infinite;
 }

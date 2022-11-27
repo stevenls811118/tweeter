@@ -5,6 +5,7 @@
  */
 console.log('client.js load successfully');
 
+// Retrive the form, error, and declear error messages
 const $form = $('#tweet-form');
 const $error = $('#error');
 const $noInput = $(`
@@ -59,14 +60,14 @@ const createTweetElement = (tweet) => {
   $('.tweetTest').append($tweetTest);
 };
 
-// Form listening function to 
+// Form listening function for submission
 $form.on('submit', function(event) {
   event.preventDefault(); // Stop the form from loading a new page
   $error.empty(); // Remove the previous error message
   const tweetText = $tweet.val(); //Save the input value to tweetText
   
   // Check if tweet valid
-  if (tweetText === '' || tweetText == null) { 
+  if (tweetText === '' || tweetText === null) {
     $error.append($noInput);
   } else if (tweetText.length > 140) {
     $error.append($overLimit);
@@ -82,7 +83,7 @@ $form.on('submit', function(event) {
         $counter.append(`<a>140</a>`); // Reset it back to 140
       }
     });
-  }  
+  }
 });
 
 // Using Ajax to get tweets
@@ -90,7 +91,7 @@ const loadtweets = () => {
   $.ajax({
     url: `http://localhost:8080/tweets`,
     success: (response) => {
-      $('.tweetTest').empty();
+      $('.tweetTest').empty(); // Remove previous loading tweets
       renderTweets(response);
     },
     error: (error) => {
@@ -100,10 +101,10 @@ const loadtweets = () => {
 };
 
 // Form slide out and hide feature
-$("#display-form").click(function () {
-  if ( $( "#tweet-form" ).first().is( ":hidden" ) ) {
-    $("#tweet-form").slideDown( "slow" );
-    $tweet.focus();
+$("#display-form").click(function() {
+  if ($("#tweet-form").first().is(":hidden")) {
+    $("#tweet-form").slideDown("slow");
+    $tweet.focus(); // Focus cursor to the textarea
   } else {
     $("#tweet-form").hide();
   }
