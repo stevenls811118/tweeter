@@ -78,6 +78,8 @@ $form.on('submit', function(event) {
       success: () => {
         loadtweets();
         $tweet.val(''); // Clear the input from textarea
+        $counter.empty(); // Clear the counter
+        $counter.append(`<a>140</a>`); // Reset it back to 140
       }
     });
   }  
@@ -96,5 +98,15 @@ const loadtweets = () => {
     }
   });
 };
+
+// Form slide out and hide feature
+$("#display-form").click(function () {
+  if ( $( "#tweet-form" ).first().is( ":hidden" ) ) {
+    $("#tweet-form").slideDown( "slow" );
+    $tweet.focus();
+  } else {
+    $("#tweet-form").hide();
+  }
+});
 
 loadtweets(); // Load tweets when refresh the page
